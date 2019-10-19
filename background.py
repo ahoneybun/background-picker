@@ -31,6 +31,7 @@ class MainWindow(Gtk.Window):
 
         ### Button Definement
         self.Backgroundbutton = Gtk.FileChooserButton()
+        self.Backgroundbutton.set_title("Select Background Image")
         self.Backgroundlabel = Gtk.Label()
         self.Backgroundlabel.set_text("Background")
         self.Backgroundbutton.set_halign(Gtk.Align.CENTER)
@@ -38,6 +39,7 @@ class MainWindow(Gtk.Window):
         self.Backgroundbutton.set_size_request(300, 150)
 
         self.Lockscreenbutton = Gtk.FileChooserButton()
+        self.Lockscreenbutton.set_title("Select Lockscreen Image")
         self.Lockscreenlabel = Gtk.Label()
         self.Lockscreenlabel.set_text("Lockscreen")
         self.Lockscreenbutton.set_halign(Gtk.Align.CENTER)
