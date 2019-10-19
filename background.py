@@ -20,24 +20,26 @@ class MainWindow(Gtk.Window):
         self.headerbar.props.title = "Background Picker"
 
         ### Hiding the About button until it's coded in.
-        self.button = Gtk.Button()
-        icon = Gio.ThemedIcon(name="open-menu-symbolic")
-        image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON)
-        self.button.add(image)
-        self.headerbar.pack_end(self.button)
+        #self.button = Gtk.Button()
+        #icon = Gio.ThemedIcon(name="open-menu-symbolic")
+        #image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON)
+        #self.button.add(image)
+        #self.headerbar.pack_end(self.button)
 
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
         self.add(vbox)
 
         ### Button Definement
         self.Backgroundbutton = Gtk.FileChooserButton()
-        self.Backgroundlabel = Gtk.Label("Background")
+        self.Backgroundlabel = Gtk.Label()
+        self.Backgroundlabel.set_text("Background")
         self.Backgroundbutton.set_halign(Gtk.Align.CENTER)
         self.Backgroundbutton.set_valign(Gtk.Align.CENTER)
         self.Backgroundbutton.set_size_request(300, 150)
 
         self.Lockscreenbutton = Gtk.FileChooserButton()
-        self.Lockscreenlabel = Gtk.Label("Lockscreen")
+        self.Lockscreenlabel = Gtk.Label()
+        self.Lockscreenlabel.set_text("Lockscreen")
         self.Lockscreenbutton.set_halign(Gtk.Align.CENTER)
         self.Lockscreenbutton.set_valign(Gtk.Align.CENTER)
         self.Lockscreenbutton.set_size_request(300, 150)
@@ -58,9 +60,9 @@ class MainWindow(Gtk.Window):
         #self.rightbutton.connect("color-set", self.on_color_activated, "right")
 
         ### Grid Setup
-        self.grid.attach(self.Backgroundlabel, 0, 2, 1, 1)
+        self.grid.attach(self.Backgroundlabel, 0, 5, 1, 1)
         self.grid.attach(self.Backgroundbutton, 0, 1, 1, 1)
-        self.grid.attach(self.Lockscreenlabel, 1, 2, 1, 1)
+        self.grid.attach(self.Lockscreenlabel, 1, 5, 1, 1)
         self.grid.attach(self.Lockscreenbutton, 1, 1, 1, 1)
 
         #vbox.pack_start(self.aboutlabel, True, True, 0)
