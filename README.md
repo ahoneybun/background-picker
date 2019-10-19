@@ -1,1 +1,1 @@
-[Main window](image/main-window.png)
+![Main window](image/main-window.png)
