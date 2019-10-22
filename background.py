@@ -11,7 +11,6 @@ class MainWindow(Gtk.Window):
 
     def __init__(self):
         Gtk.Window.__init__(self)
-        self.set_border_width(100)
 
         #### HeaderBar Define
         self.headerbar = Gtk.HeaderBar()
@@ -27,6 +26,7 @@ class MainWindow(Gtk.Window):
         #self.headerbar.pack_end(self.button)
 
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        vbox.set_property("margin", 100)
         self.add(vbox)
 
         ### Button Definement
