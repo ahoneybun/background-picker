@@ -41,7 +41,7 @@ class MainWindow(Gtk.Window):
         self.background_button.set_halign(Gtk.Align.CENTER)
         self.background_button.set_valign(Gtk.Align.CENTER)
         self.background_button.set_size_request(300, 150)
-        self.background_button.connect('file-set' self.on_file.set)
+        self.background_button.connect('file-set', self.on_file.set)
         
         self.lockscreen_button = Gtk.FileChooserButton()
         self.lockscreen_button.set_title("Select Lockscreen Image")
