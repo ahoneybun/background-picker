@@ -35,30 +35,38 @@ class MainWindow(Gtk.Window):
         ### Lockscreen Label Definition
         self.lockscreen_label = Gtk.Label(label="Lockscreen")
 
+        ### Our FileChooserDialogs
+        self.background_dialog = Gtk.FileChooserDialog()
+        self.background_dialog.set_title('Select an image')
+        self.background_dialog.add_buttons(
+            Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+            Gtk.STOCK_OPEN, Gtk.ResponseType.OK
+        )
+        self.add_filters(self.background_dialog)
+
+        ### Our FileChooserDialog
+        self.lockscreen_dialog = Gtk.FileChooserDialog()
+        self.lockscreen_dialog.set_title('Select an image')
+        self.lockscreen_dialog.add_buttons(
+            Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+            Gtk.STOCK_OPEN, Gtk.ResponseType.OK
+        )
+        self.add_filters(self.lockscreen_dialog)
+
         ### Button Definement
-        self.background_button = Gtk.FileChooserButton()
+        self.background_button = Gtk.FileChooserButton.new_with_dialog(self.background_dialog)
         self.background_button.set_title("Select Background Image")
         self.background_button.set_halign(Gtk.Align.CENTER)
         self.background_button.set_valign(Gtk.Align.CENTER)
         self.background_button.set_size_request(300, 150)
-        self.background_button.connect('file-set', self.on_file_set)
+        self.background_button.connect('file-set', self.on_file_set, "background")
         
-        ### Our FileChooserDialog
-        self.dialog = Gtk.FileChooserDialog(
-            "Select a background image", 
-            self,
-            Gtk.FileChooserAction.OPEN,
-            (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-            Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
-        )
-        self.add_filters(self.dialog)
-
-        
-        self.lockscreen_button = Gtk.FileChooserButton()
+        self.lockscreen_button = Gtk.FileChooserButton.new_with_dialog(self.lockscreen_dialog)
         self.lockscreen_button.set_title("Select Lockscreen Image")
         self.lockscreen_button.set_halign(Gtk.Align.CENTER)
         self.lockscreen_button.set_valign(Gtk.Align.CENTER)
         self.lockscreen_button.set_size_request(300, 150)
+        self.lockscreen_button.connect('file-set', self.on_file_set, "lockscreen")
 
         self.grid = Gtk.Grid()
         self.grid.set_column_spacing(6)
@@ -86,14 +94,14 @@ class MainWindow(Gtk.Window):
         vbox.pack_start(self.grid, True, True, 0)
     
     def on_file_set(self, widget, data=None):
-        """When we get a filename from one of the buttons."""
-        # dialog = widget.props.dialog
-        # file_path = dialog.get_filename()
-        # print(file_path)
-
-        ### DEBUG ONLY ###
-        for i in widget.props:
-            print(i)
+        """Handler for our FileChooserButtons"""
+        file_path = widget.get_filename()
+        if data == "background":
+            print(f'Background: {file_path}')
+            # insert code for setting background here
+        elif data == "lockscreen":
+            print(f'Lockscreen: {file_path}')
+            # insert code for setting lockscreen here
     
     def add_filters(self, dialog):
         filter_image = Gtk.FileFilter()
