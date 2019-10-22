@@ -29,17 +29,21 @@ class MainWindow(Gtk.Window):
         vbox.set_property("margin", 100)
         self.add(vbox)
 
+        ### Background Label Definition
+        self.background_label = Gtk.Label(label="Background")
+
+        ### Lockscreen Label Definition
+        self.lockscreen_label = Gtk.Label(label="Lockscreen")
+
         ### Button Definement
         self.background_button = Gtk.FileChooserButton()
         self.background_button.set_title("Select Background Image")
-        self.background_label = Gtk.Label(label="Background")
         self.background_button.set_halign(Gtk.Align.CENTER)
         self.background_button.set_valign(Gtk.Align.CENTER)
         self.background_button.set_size_request(300, 150)
         
         self.lockscreen_button = Gtk.FileChooserButton()
         self.lockscreen_button.set_title("Select Lockscreen Image")
-        self.lockscreen_label = Gtk.Label(label="Lockscreen")
         self.lockscreen_button.set_halign(Gtk.Align.CENTER)
         self.lockscreen_button.set_valign(Gtk.Align.CENTER)
         self.lockscreen_button.set_size_request(300, 150)
