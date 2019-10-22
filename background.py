@@ -30,19 +30,19 @@ class MainWindow(Gtk.Window):
         self.add(vbox)
 
         ### Button Definement
-        self.Backgroundbutton = Gtk.FileChooserButton()
-        self.Backgroundbutton.set_title("Select Background Image")
-        self.Backgroundlabel = Gtk.Label(label="Background")
-        self.Backgroundbutton.set_halign(Gtk.Align.CENTER)
-        self.Backgroundbutton.set_valign(Gtk.Align.CENTER)
-        self.Backgroundbutton.set_size_request(300, 150)
+        self.background_button = Gtk.FileChooserButton()
+        self.background_button.set_title("Select Background Image")
+        self.background_label = Gtk.Label(label="Background")
+        self.background_button.set_halign(Gtk.Align.CENTER)
+        self.background_button.set_valign(Gtk.Align.CENTER)
+        self.background_button.set_size_request(300, 150)
         
-        self.Lockscreenbutton = Gtk.FileChooserButton()
-        self.Lockscreenbutton.set_title("Select Lockscreen Image")
-        self.Lockscreenlabel = Gtk.Label(label="Lockscreen")
-        self.Lockscreenbutton.set_halign(Gtk.Align.CENTER)
-        self.Lockscreenbutton.set_valign(Gtk.Align.CENTER)
-        self.Lockscreenbutton.set_size_request(300, 150)
+        self.lockscreen_button = Gtk.FileChooserButton()
+        self.lockscreen_button.set_title("Select Lockscreen Image")
+        self.lockscreen_label = Gtk.Label(label="Lockscreen")
+        self.lockscreen_button.set_halign(Gtk.Align.CENTER)
+        self.lockscreen_button.set_valign(Gtk.Align.CENTER)
+        self.lockscreen_button.set_size_request(300, 150)
 
         self.grid = Gtk.Grid()
         self.grid.set_column_spacing(6)
@@ -60,10 +60,10 @@ class MainWindow(Gtk.Window):
         #self.rightbutton.connect("color-set", self.on_color_activated, "right")
 
         ### Grid Setup
-        self.grid.attach(self.Backgroundlabel, 0, 5, 1, 1)
-        self.grid.attach(self.Backgroundbutton, 0, 1, 1, 1)
-        self.grid.attach(self.Lockscreenlabel, 1, 5, 1, 1)
-        self.grid.attach(self.Lockscreenbutton, 1, 1, 1, 1)
+        self.grid.attach(self.background_label, 0, 5, 1, 1)
+        self.grid.attach(self.background_button, 0, 1, 1, 1)
+        self.grid.attach(self.lockscreen_label, 1, 5, 1, 1)
+        self.grid.attach(self.lockscreen_button, 1, 1, 1, 1)
 
         #vbox.pack_start(self.aboutlabel, True, True, 0)
         #vbox.pack_start(self.aboutcenterlabel, True, True, 0)
