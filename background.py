@@ -118,7 +118,6 @@ class MainWindow(Gtk.Window):
         filter_any.set_name("All Files")
         filter_any.add_pattern('*')
         dialog.add_filter(filter_any)
-        
 
     def on_button_clicked(self, widget):
         win.show_all()
