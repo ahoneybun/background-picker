@@ -2,6 +2,7 @@
 
 # Imports
 import gi
+import subprocess
 import sys
 
 gi.require_version('Gtk', '3.0')
@@ -99,9 +100,11 @@ class MainWindow(Gtk.Window):
         if data == "background":
             print(f'Background: {file_path}')
             # insert code for setting background here
+            subprocess.run(['ls', '-l', '-a', file_path])
         elif data == "lockscreen":
             print(f'Lockscreen: {file_path}')
             # insert code for setting lockscreen here
+            subprocess.run(['ls', '-l', '-a', file_path])
     
     def add_filters(self, dialog):
         filter_image = Gtk.FileFilter()
