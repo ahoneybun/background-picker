@@ -41,7 +41,18 @@ class MainWindow(Gtk.Window):
         self.background_button.set_halign(Gtk.Align.CENTER)
         self.background_button.set_valign(Gtk.Align.CENTER)
         self.background_button.set_size_request(300, 150)
-        self.background_button.connect('file-set', self.on_file.set)
+        self.background_button.connect('file-set', self.on_file_set)
+        
+        ### Our FileChooserDialog
+        self.dialog = Gtk.FileChooserDialog(
+            "Select a background image", 
+            self,
+            Gtk.FileChooserAction.OPEN,
+            (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+            Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
+        )
+        self.add_filters(self.dialog)
+
         
         self.lockscreen_button = Gtk.FileChooserButton()
         self.lockscreen_button.set_title("Select Lockscreen Image")
@@ -76,9 +87,27 @@ class MainWindow(Gtk.Window):
     
     def on_file_set(self, widget, data=None):
         """When we get a filename from one of the buttons."""
-        dialog = widget.props.dialog
-        file_path = dialog.get_filename()
-        print(file_path)
+        # dialog = widget.props.dialog
+        # file_path = dialog.get_filename()
+        # print(file_path)
+
+        ### DEBUG ONLY ###
+        for i in widget.props:
+            print(i)
+    
+    def add_filters(self, dialog):
+        filter_image = Gtk.FileFilter()
+        filter_image.set_name("Images")
+        filter_image.add_mime_type('image/jpg')
+        filter_image.add_mime_type('image/jpeg')
+        filter_image.add_mime_type('image/png')
+        dialog.add_filter(filter_image)
+
+        filter_any = Gtk.FileFilter()
+        filter_any.set_name("All Files")
+        filter_any.add_pattern('*')
+        dialog.add_filter(filter_any)
+        
 
     def on_button_clicked(self, widget):
         win.show_all()
