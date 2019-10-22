@@ -41,6 +41,7 @@ class MainWindow(Gtk.Window):
         self.background_button.set_halign(Gtk.Align.CENTER)
         self.background_button.set_valign(Gtk.Align.CENTER)
         self.background_button.set_size_request(300, 150)
+        self.background_button.connect('file-set' self.on_file.set)
         
         self.lockscreen_button = Gtk.FileChooserButton()
         self.lockscreen_button.set_title("Select Lockscreen Image")
@@ -72,6 +73,12 @@ class MainWindow(Gtk.Window):
         #vbox.pack_start(self.aboutlabel, True, True, 0)
         #vbox.pack_start(self.aboutcenterlabel, True, True, 0)
         vbox.pack_start(self.grid, True, True, 0)
+    
+    def on_file_set(self, widget, data=None):
+        """When we get a filename from one of the buttons."""
+        dialog = widget.props.dialog
+        file_path = dialog.get_filename()
+        print(file_path)
 
     def on_button_clicked(self, widget):
         win.show_all()
