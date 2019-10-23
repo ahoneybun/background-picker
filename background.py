@@ -100,7 +100,7 @@ class MainWindow(Gtk.Window):
         if data == "background":
             print(f'Background: {file_path}')
             # insert code for setting background here
-            subprocess.run(['gsettings', 'get', 'org.gnome.desktop.background', 'picture-uri', 'file:file_path'])
+            subprocess.run(['feh', '--bg-scale', file_path])
         elif data == "lockscreen":
             print(f'Lockscreen: {file_path}')
             # insert code for setting lockscreen here
