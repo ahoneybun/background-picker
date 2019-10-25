@@ -17,7 +17,7 @@ class MainWindow(Gtk.Window):
         self.headerbar = Gtk.HeaderBar()
         self.set_titlebar(self.headerbar)
         self.headerbar.set_show_close_button(True)
-        self.headerbar.props.title = "Background Picker"
+        self.headerbar.props.title = "Wallpaper Picker"
 
         ### Hiding the About button until it's coded in.
         #self.button = Gtk.Button()
