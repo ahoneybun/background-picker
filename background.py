@@ -104,7 +104,7 @@ class MainWindow(Gtk.Window):
         elif data == "lockscreen":
             print(f'Lockscreen: {file_path}')
             # insert code for setting lockscreen here
-            subprocess.run(['ls', '-l', '-a', file_path])
+            subprocess.run(['gsettings', 'set', 'org.gnome.desktop.screensaver', 'picture-uri', file_path])
     
     def add_filters(self, dialog):
         filter_image = Gtk.FileFilter()
